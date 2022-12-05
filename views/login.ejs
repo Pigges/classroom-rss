@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Classroom-RSS</title>
+    <style>
+        * {
+            margin: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #fff;
+            background-color: #1f1f1f;
+        }
+
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            width: fit-content;
+            height: fit-content;
+            padding: 40px 20px;
+            margin: 20px auto;
+            text-align: center;
+            border-radius: 10px;
+            background-color: #555;
+        }
+
+        .login {
+            margin-top: 20px;
+        }
+
+        .login button {
+            display: flex;
+            font-weight: bold;
+            align-items: center;
+            margin: auto;
+            border-radius: 10px;
+            border-style: none;
+            background-color: #fff;
+        }
+
+        .login button:hover {
+            background-color: #eee;
+        }
+
+        .login img {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <h1>Classroom-RSS</h1>
+        <p>In order to use this you will need to authenticate with a Google account.</br>
+        This will be used to get the data from Google's API</br>
+        Just click the button bellow and sign in with your desired Google account.</p>
+        <div class="login">
+            <button type="submit" onClick="location.href = '<%= authUrl %>';">
+            <img width="25px" alt="Google sign-in" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png"/>
+            Login with Google
+        </button>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feeds - Classroom-RSS</title>
+    <style>
+        * {
+            margin: 0;
+        }
+
+        a {
+            color: #f1f1f1;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #fff;
+            background-color: #1f1f1f;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+        }
+
+        .wrapper {
+            display: grid;
+            grid-template-columns: auto auto;
+            margin: auto;
+            width: 40%;
+            min-width: fit-content;
+            margin-bottom: 20px;
+        }
+
+        .wrapper .class {
+            display: flex;
+            justify-content: space-between;
+            max-width: 100%;
+            margin: 10px 20px;
+            padding: 10px 10px;
+            border-radius: 10px;
+            background-color: #555;
+        }
+
+        .left, .right {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .left {
+            margin-right: 10px;
+        }
+        .right {
+            margin-left: 10px;
+        }
+
+        @media screen and (max-width: 600px) {
+            .wrapper {
+                display: flex;
+                flex-direction: column;
+                margin: 0;
+                width: 100%;
+            }
+            .wrapper .class {
+                margin: 10px;
+                padding: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <a href="/account">Manage account</a>
+        <a href="/cache">Manage cache</a>
+    </div>
+    <h1 style="text-align: center; padding-bottom: 20px;">Classroom-RSS</h1>
+    <h2 style="text-align: center;">Active classes</h2>
+    <div class="wrapper">
+        <% for(i in data.courses) {%>
+            <% if(data.courses[i].courseState == 'ACTIVE') {%>
+                <div class="class">
+                    <div class="left">
+                        <p style="font-size: 1.5rem;"><%= data.courses[i].name %></p>
+                        <p><%= data.courses[i].descriptionHeading %></p>
+                    </div>
+                    <div class="right">
+                        <a href="/rss/<%= data.courses[i].id %>">RSS</a>
+                        <a href="<%= data.courses[i].alternateLink %>">Classroom</a>
+                    </div>
+                </div>
+            <% } %>
+        <% } %>
+    </div>
+    <h2 style="text-align: center;">Archived classes</h2>
+    <div class="wrapper">
+        <% for(i in data.courses) {%>
+            <% if(data.courses[i].courseState == 'ARCHIVED') {%>
+                <div class="class">
+                    <div class="left">
+                        <p style="font-size: 1.5rem;"><%= data.courses[i].name %></p>
+                        <p><%= data.courses[i].descriptionHeading %></p>
+                    </div>
+                    <div class="right">
+                        <a href="/rss/<%= data.courses[i].id %>">RSS</a>
+                        <a href="<%= data.courses[i].alternateLink %>">Classroom</a>
+                    </div>
+                </div>
+            <% } %>
+        <% } %>
+    </div>
+</body>
+</html>

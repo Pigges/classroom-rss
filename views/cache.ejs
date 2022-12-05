@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cache - Classroom-RSS</title>
+    <style>
+        * {
+            margin: 0;
+        }
+
+        a {
+            color: #f1f1f1;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #fff;
+            background-color: #1f1f1f;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+        }
+
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .wrapper .card {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            align-items: center;
+            padding: 20px 40px;
+            margin: 10px;
+            border-radius: 10px;
+            background-color: #555;
+        }
+
+        .wrapper .card .opt {
+            display: flex;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <a href="/account">Manage account</a>
+        <a href="/">Back to feeds</a>
+    </div>
+    <h1 style="text-align: center; padding-bottom: 20px;">Classroom-RSS</h1>
+    <h2 style="text-align: center;">Manage cache</h2>
+    <div class="wrapper">
+        <h3>courses</h3>
+        <div class="card">
+            <p style="font-weight: bold;">Choose what to clear</p>
+            <form action="/cache/clear/courses" method="post">
+                <div class="opts">
+                    <% if (cache.courses) { %>
+                        <div class="opt">
+                            <input type="checkbox" name="courses" id="courses">
+                            <p>Courses list</p>
+                        </div>
+                    <% } %>
+                    <% if (cache.teachers) { %>
+                        <div class="opt">
+                            <input type="checkbox" name="teachers" id="teachers">
+                            <p>Teachers list</p>
+                        </div>
+                    <% } %>
+                    <% if (cache.topics) { %>
+                        <div class="opt">
+                            <input type="checkbox" name="topics" id="topics">
+                            <p>Topics list</p>
+                        </div>
+                    <% } %>
+                </div>
+                <button>Clear cache</button>
+            </form>
+        </div>
+        <h3>userProfiles</h3>
+        <div class="card">
+            <p style="font-weight: bold;">Choose what to clear</p>
+            <form action="/cache/clear/userProfiles" method="post">
+                <div class="opts">
+                    <% for (i in cache.userProfiles) { %>
+                        <div class="opt">
+                            <input type="checkbox" name="<%= i %>" id="<%= i %>">
+                            <p><%= cache.userProfiles[i].name.fullName %></p>
+                        </div>
+                    <% } %>
+                </div>
+                <button>Clear cache</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

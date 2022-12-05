@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account - Classroom-RSS</title>
+    <style>
+        * {
+            margin: 0;
+        }
+
+        a {
+            color: #f1f1f1;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #fff;
+            background-color: #1f1f1f;
+        }
+
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            width: fit-content;
+            text-align: center;
+            width: 500px;
+            max-width: 80%;
+            padding: 40px;
+            align-items: center;
+            margin: 10px auto;
+            border-radius: 10px;
+            background-color: #555;
+        }
+
+        .wrapper img {
+            width: 200px;
+            max-width: 100%;
+            border-radius: 10px;
+        }
+
+        .scopes {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            font-size: .75rem;
+            width: fit-content;
+            margin: auto;
+            border-radius: 10px;
+            background-color: #555;
+        }
+
+        button {
+            padding: 5px 30px;
+            border-radius: 10px;
+            background-color: #fff;
+            border-style: none;
+        }
+
+        button:hover {
+            outline: 1px solid #ff0000;
+            background-color: #ffdddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <a href="/">Back to feeds</a>
+        <a href="/cache">Manage cache</a>
+    </div>
+    <h1 style="text-align: center; padding-bottom: 20px;">Classroom-RSS</h1>
+    <h2 style="text-align: center;">Your account</h2>
+    <div class="wrapper">
+        <img src="<%= user.photoUrl %>" alt="">
+        <h3 style="padding-bottom: 20px;"><%= user.name.fullName %></h3>
+        <form action="/logout" method="post">
+            <button>Logout</button>
+            <p style="text-shadow: 1px 1px #ff0000;">When you logout,<br/> the credentials used to talk with Google's API<br/>and the cache<br/>will be destroyed</p>
+        </form>
+    </div>
+    <h2 style="text-align: center;">Scopes</h2>
+    <div class="scopes">
+        <% for (i in scopes) { %>
+            <p><%= scopes[i] %></p>
+        <% } %>
+    </div>
+</body>
+</html>
