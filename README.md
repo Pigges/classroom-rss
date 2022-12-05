@@ -23,6 +23,7 @@ reference to [here](https://developers.google.com/workspace/guides/configure-oau
 
 * You should then be able to download the credentials as JSON.
 Do so and save it to the root of this project.
+*You may want to change the 'redirect_uris' field in the file.*
 
 **The project won't run without the credentials.json file in the root of this repository.**
 
